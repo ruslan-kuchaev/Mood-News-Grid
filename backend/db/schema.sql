@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS news (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT,
+    pubdate TIMESTAMPTZ NOT NULL,
+    language VARCHAR(10) DEFAULT 'ru',
+    content TEXT NOT NULL,
+    url TEXT NOT NULL UNIQUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);

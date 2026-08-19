@@ -1,0 +1,53 @@
+# Секреты и конфигурации (НИКОГДА не должны попадать в Git)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Скомпилированные бинарники и исполняемые файлы
+/bin/
+/dist/
+main
+server
+app
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Тестовые бинарники и отчеты покрытия
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Логи и временные файлы
+*.log
+tmp/
+temp/
+
+# Локальные файлы баз данных (если используются SQLite или дампы)
+*.db
+*.sqlite
+*.sqlite3
+*.sql.dump
+
+# Настройки IDE и редакторов
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Системные файлы ОС
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
