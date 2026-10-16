@@ -27,6 +27,7 @@ coverage.html
 *.log
 tmp/
 temp/
+facts/
 
 # Локальные файлы баз данных (если используются SQLite или дампы)
 *.db

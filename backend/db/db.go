@@ -32,12 +32,28 @@ func Init() error {
 		return fmt.Errorf("connect to db: %w", err)
 	}
 
-	if _, err := pool.Exec(context.Background(), schemaSQL); err != nil {
-		return fmt.Errorf("apply schema: %w", err)
+	// Важно: закрываем пул при ошибке инициализации схемы
+	var initErr error
+	defer func() {
+		if initErr != nil && pool != nil {
+			pool.Close()
+		}
+	}()
+
+	ctx := context.Background()
+
+	if _, err := pool.Exec(ctx, schemaSQL); err != nil {
+		initErr = fmt.Errorf("apply schema: %w", err)
+		return initErr
+	}
+
+	if _, err := pool.Exec(ctx, "TRUNCATE TABLE news RESTART IDENTITY"); err != nil {
+		initErr = fmt.Errorf("clear news table: %w", err)
+		return initErr
 	}
 
 	Pool = pool
-	log.Println("Postgres pool connected, schema applied")
+	log.Println("Postgres pool connected, schema applied, news table cleared")
 	return nil
 }
 

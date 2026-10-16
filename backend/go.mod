@@ -17,6 +17,7 @@ require (
 require (
 	github.com/jackc/pgx/v5 v5.10.0
 	github.com/joho/godotenv v1.5.1
+	github.com/google/uuid v1.6.0
 	github.com/sashabaranov/go-openai v1.42.0 // indirect
 	github.com/spyzhov/ajson v0.8.0 // indirect
 	gorm.io/gorm v1.31.2
